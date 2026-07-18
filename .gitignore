@@ -1,1 +1,4 @@
-*.md
+*.o
+build/
+bin/
+data/
