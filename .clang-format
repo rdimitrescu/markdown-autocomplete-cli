@@ -1,0 +1,93 @@
+# Project coding style for markdown-autocomplete-cli.
+#
+# Self-contained: every option that matters is set explicitly on top of the
+# LLVM base, so anyone who clones this repo gets identical output regardless
+# of what they have in their own ~/.clang-format.
+#
+# Linux-kernel style with checkpatch.pl settings:
+#   * UseTab: Always        tabs for indentation (kernel convention)
+#   * TabWidth / IndentWidth: 4   (checkpatch --tab-size=4)
+#   * ColumnLimit: 80       (checkpatch --max-line-length=80)
+#
+# Format a file in place:   clang-format -i src/trie.c
+# Format the whole tree:    find src include tests -name '*.[ch]' -exec clang-format -i {} +
+# Check without writing:    clang-format --dry-run --Werror src/*.c include/*.h
+---
+Language: Cpp
+BasedOnStyle: LLVM
+
+# --- indentation --------------------------------------------------------
+UseTab: Always
+TabWidth: 4
+IndentWidth: 4
+ContinuationIndentWidth: 8
+IndentCaseLabels: false
+IndentGotoLabels: false
+IndentPPDirectives: None
+AccessModifierOffset: -4
+NamespaceIndentation: None
+
+# --- line length & wrapping ---------------------------------------------
+ColumnLimit: 80
+AlignAfterOpenBracket: Align
+AlignOperands: true
+AlignEscapedNewlines: Left
+BreakBeforeBinaryOperators: None
+BreakBeforeTernaryOperators: false
+AlwaysBreakBeforeMultilineStrings: false
+BreakStringLiterals: false
+BinPackArguments: true
+BinPackParameters: true
+AllowAllParametersOfDeclarationOnNextLine: false
+
+# --- braces (K&R / kernel: attached, but function bodies on next line) --
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterCaseLabel: false
+  AfterClass: false
+  AfterControlStatement: false
+  AfterEnum: false
+  AfterFunction: true
+  AfterNamespace: true
+  AfterStruct: false
+  AfterUnion: false
+  AfterExternBlock: false
+  BeforeCatch: false
+  BeforeElse: false
+  IndentBraces: false
+  SplitEmptyFunction: true
+  SplitEmptyRecord: true
+  SplitEmptyNamespace: true
+
+# --- "short" constructs never collapse to one line ----------------------
+AllowShortBlocksOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+
+# --- spacing ------------------------------------------------------------
+SpaceAfterCStyleCast: false
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeParens: ControlStatements
+SpaceInEmptyParentheses: false
+SpacesInCStyleCastParentheses: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+SpacesBeforeTrailingComments: 1
+Cpp11BracedListStyle: false
+
+# --- pointers / references (int *p, not int* p) -------------------------
+PointerAlignment: Right
+DerivePointerAlignment: false
+
+# --- misc ---------------------------------------------------------------
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+AlignTrailingComments: false
+KeepEmptyLinesAtTheStartOfBlocks: false
+MaxEmptyLinesToKeep: 1
+SortIncludes: false
+ReflowComments: false
+InsertNewlineAtEOF: true
+...

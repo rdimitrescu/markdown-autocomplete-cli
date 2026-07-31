@@ -19,12 +19,12 @@ typedef struct {
 	struct dll_node_t *next, *prev;
 } str_dll_node_t;
 
-typedef struct str_dll_t{
+typedef struct str_dll_t {
 	str_dll_node_t *head, *tail;
 	int nr_nodes;
 } str_dll_t;
 
-typedef struct trie_node_t{
+typedef struct trie_node_t {
 	char value;
 
 	int nr_childs;
